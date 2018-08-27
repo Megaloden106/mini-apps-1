@@ -1,2 +1,37 @@
-
-
+<head> 
+ <title>Tic Tac Toe</title>
+ <script src='app.js'></script>
+</head>
+<body>
+  <div>TIC-TAC-TOE</div>
+  <div id='result'></div>
+  <button type='button' id='replay' onclick='clearBoard()' style='display: none'>
+    replay
+  </button>
+  <table style='width: 100%; height: 100%; text-align: center'>
+    <tr>
+      <td></td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td id='1,1' onclick='placePiece(1,1)'></td>
+      <td id='1,2' onclick='placePiece(1,2)'></td>
+      <td id='1,3' onclick='placePiece(1,3)'></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td id='2,1' onclick='placePiece(2,1)'></td>
+      <td id='2,2' onclick='placePiece(2,2)'></td>
+      <td id='2,3' onclick='placePiece(2,3)'></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td id='3,1' onclick='placePiece(3,1)'></td>
+      <td id='3,2' onclick='placePiece(3,2)'></td>
+      <td id='3,3' onclick='placePiece(3,3)'></td>
+    </tr>
+  </table>
+</body>
