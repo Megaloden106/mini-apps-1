@@ -1,25 +1,21 @@
-console.log('App.js is connected');
-
 class App {
   constructor() {
-    console.log('App was instantiated')
     this.server = 'http://localhost:3000/data';
   }
 
   init() {
     $('#submit').click((event) => {
       event.preventDefault();
-      this.post($('#input').val());
+      this.post($('#file-input')[0].files[0]);
     });
   }
 
   post(data) {
-    // console.log('data: ', data)
-
     $.ajax({
       url: this.server,
       type: 'POST',
-      contentType: 'application/json',
+      contentType: false,
+      processData: false,
       data: data,
       success: () => {
         this.get();
