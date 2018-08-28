@@ -3,7 +3,7 @@
  * presentation code
  ***********************/
 const view = {
-  placePiece: (row, col) => {
+  placePiece: (row, col, players, turns) => {
     document.getElementById(`${row},${col}`).innerHTML = players[turns % 2];
     console.log(`turn ${turns + 1}, ${players[turns % 2]} places: ${row}, ${col}`);
   },
@@ -91,6 +91,7 @@ const { rowCheck, colCheck, diagCheck } = modelHelpers;
 // model module 1
 const model = {
   updateBoard: (row, col) => {
+    placePiece(row + 1, col + 1, players, turns);
     turns % 2 === 0
       ? boardX[row] |= (1 << col)
       : boardO[row] |= (1 << col);
@@ -136,7 +137,6 @@ const { updateBoard, resetState, checkBoardConditions } = model;
 const requestHandler = {
   handlePiecePlacement: (row, col) => {
     if (isValidPlacement(row, col) && !isEndOfGame) {
-      placePiece(row, col);
       updateBoard(row - 1, col -1);
       checkBoardConditions(row - 1, col - 1);
     } else {
