@@ -6,11 +6,13 @@ class App {
   init() {
     $('#submit').click((event) => {
       event.preventDefault();
-      this.post($('#file-input')[0].files[0]);
+      let file = $('#file-input')[0].files[0];
+      let query = $('#filter').val();
+      this.post(file, query);
     });
   }
 
-  post(data) {
+  post(data, query) {
     $.ajax({
       url: this.server,
       type: 'POST',
@@ -18,7 +20,7 @@ class App {
       processData: false,
       data: data,
       success: () => {
-        this.get();
+        this.get(query);
       },
       error: (data) => {
         console.log(data);
@@ -26,17 +28,17 @@ class App {
     });
   }
 
-  get(input) {
+  get(query) {
     $.ajax({
       url: this.server,
       type: 'GET',
+      data: { query },
       contentType: 'application/json',
       success: (data) => {
-        data = data.split('\n');
+        data = data.replace(/,/g, '    |   ');
+        data = data.replace(/\n/g, '<br>');
         $('#csv').empty();
-        for (let elem of data) {
-          $('#csv').append(`${elem}<br>`);
-        }
+        $('#csv').append(data);
       },
       error: (data) => {
         console.log(data);
