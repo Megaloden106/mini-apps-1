@@ -1,0 +1,20 @@
+.container {
+  text-align: center;
+  width: 100%;
+}
+
+table, th, td {
+  border-collapse: collapse;
+  border: 1px solid black;
+  height: 100px;
+}
+
+.r {
+  background-color: red;
+  color: red;
+}
+
+.b {
+  background-color: black;
+  color: black;
+}
