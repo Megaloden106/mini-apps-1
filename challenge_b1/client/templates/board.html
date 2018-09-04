@@ -1,0 +1,17 @@
+<table class='board'>
+  <thead>
+    <tr>
+      <th colspan='8'>Chess Board</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat='row in $ctrl.rows'>
+      <td 
+        col='col'
+        ng-repeat='col in $ctrl.cols' 
+        class='{{$ctrl.matrix[col][row - 1]}}'
+        ng-click='$ctrl.onClick(row - 1, col)'
+      >{{row}}-{{col}}</td>
+    </tr>
+  </tbody>
+</table>
